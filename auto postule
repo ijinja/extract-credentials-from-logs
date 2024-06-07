@@ -1,0 +1,35 @@
+// ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      2024-06-07
+// @description  try to take over the world!
+// @author       You
+// @match        https://xxxx.xxxxx-xxxxxx.ma/candidatSinscrireConcours.asp*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=xxxxx-xxxxxxx.ma
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+document.querySelector("#fonctionnaire2").click();
+    document.querySelector("#specifite1").click();
+    document.querySelector("#declaration").click();
+    for (let i = 1; i <= 10; i++) {
+    const element = document.querySelector(`#fichier_document_${i}`);
+    if (element) {
+        element.value = 'cin.pdf';
+    }
+        document.querySelector("#valider").click();
+        // Wait for the element to be visible
+const interval = setInterval(() => {
+    const element = document.querySelector("body > div.swal2-container.swal2-rtl.swal2-center.swal2-fade.swal2-shown > div > div.swal2-actions > button.swal2-confirm.swal2-styled");
+    if (element) {
+        clearInterval(interval); // Stop checking once the element is found
+        element.click(); // Click on the element
+    }
+}, 100); // Check every 100 milliseconds
+
+}
+
+    // Your code here...
+})();
